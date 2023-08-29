@@ -9,7 +9,7 @@ module.exports = {
   },
   module: {
     rules: [{
-      test: /\.js$/,
+      test: /\.ts$/,
       exclude: /(node_modules|build)/,
       use: {
         loader: 'babel-loader'
@@ -17,3 +17,5 @@ module.exports = {
     }]
   }
 };
+
+//TODO: Redo webpack build process.

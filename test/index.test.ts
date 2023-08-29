@@ -1,6 +1,6 @@
 /*global expect*/
-import FirestoreParser from '../src'
-
+import FirestoreParser from '../src/index'
+//TODO: Redo tests.
 const testData = {
   "name": "some/large/long/value",
   "fields": {
