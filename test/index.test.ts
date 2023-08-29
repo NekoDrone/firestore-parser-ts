@@ -1,5 +1,5 @@
 /*global expect*/
-import FireStoreParser from './index'
+import FirestoreParser from '../src'
 
 const testData = {
   "name": "some/large/long/value",
@@ -63,11 +63,11 @@ const testData = {
 };
 
 test('Simple JS object match', () => {
-  expect(FireStoreParser({ data: "" })).toEqual({ data: "" });
+  expect(FirestoreParser({ data: "" })).toEqual({ data: "" });
 });
 
 test('Complex JS object match', () => {
-  expect(FireStoreParser(testData)).toEqual({
+  expect(FirestoreParser(testData)).toEqual({
     "createTime": "2018-03-11T14:10:11.083793Z",
     "fields": {
       "array": [
@@ -97,7 +97,7 @@ test('Complex JS object match', () => {
 });
 
 test('Bytes match', () => {
-  expect(FireStoreParser({
+  expect(FirestoreParser({
     encoded: {
       bytesValue: "bHVrZWlhbXlvdXJmYXRoZXI="
     }
@@ -107,7 +107,7 @@ test('Bytes match', () => {
 });
 
 test('Strings match', () => {
-  expect(FireStoreParser({
+  expect(FirestoreParser({
     createTime: "2018-03-11T14:10:11.083793Z"
   })).toEqual({
     createTime: "2018-03-11T14:10:11.083793Z"
@@ -115,7 +115,7 @@ test('Strings match', () => {
 });
 
 test('Null match', () => {
-  expect(FireStoreParser({
+  expect(FirestoreParser({
     "isNull": {
       "nullValue": null
     }
@@ -123,7 +123,7 @@ test('Null match', () => {
 });
 
 test('Reference match', () => {
-  expect(FireStoreParser({
+  expect(FirestoreParser({
     "ref": {
       "referenceValue": "some/longe/string/that/has/values"
     }
@@ -133,7 +133,7 @@ test('Reference match', () => {
 });
 
 test('Geo match', () => {
-  expect(FireStoreParser({
+  expect(FirestoreParser({
     "geo": {
       "geoPointValue": {
         "latitude": 10,
@@ -149,7 +149,7 @@ test('Geo match', () => {
 });
 
 test('Geo match zeros', () => {
-  expect(FireStoreParser({
+  expect(FirestoreParser({
     "geo": {
       "geoPointValue": {}
     }
@@ -162,7 +162,7 @@ test('Geo match zeros', () => {
 });
 
 test('boolean match', () => {
-  expect(FireStoreParser({
+  expect(FirestoreParser({
     "bool": {
       "booleanValue": true
     }
@@ -170,7 +170,7 @@ test('boolean match', () => {
 });
 
 test('double match', () => {
-  expect(FireStoreParser({
+  expect(FirestoreParser({
     "double": {
       "doubleValue": "456"
     }
@@ -178,7 +178,7 @@ test('double match', () => {
 });
 
 test('integer match', () => {
-  expect(FireStoreParser({
+  expect(FirestoreParser({
     "number": {
       "integerValue": "123"
     }
@@ -186,7 +186,7 @@ test('integer match', () => {
 });
 
 test('Object match', () => {
-  expect(FireStoreParser({
+  expect(FirestoreParser({
     "obj": {
       "mapValue": {
         "fields": {
@@ -200,7 +200,7 @@ test('Object match', () => {
 });
 
 test('Object match with no values', () => {
-  expect(FireStoreParser({
+  expect(FirestoreParser({
     "obj": {
       "mapValue": {}
     }
@@ -208,7 +208,7 @@ test('Object match with no values', () => {
 });
 
 test('Object match with undefined value', () => {
-  expect(FireStoreParser({
+  expect(FirestoreParser({
     "obj": {
       "mapValue": undefined
     }
@@ -216,7 +216,7 @@ test('Object match with undefined value', () => {
 });
 
 test('Array match', () => {
-  expect(FireStoreParser({
+  expect(FirestoreParser({
     "array": {
       "arrayValue": {
         "values": [{
@@ -232,7 +232,7 @@ test('Array match', () => {
 });
 
 test('Array match with no values', () => {
-  expect(FireStoreParser({
+  expect(FirestoreParser({
     "array": {
       "arrayValue": {}
     }
@@ -240,7 +240,7 @@ test('Array match with no values', () => {
 });
 
 test('Array match with undefined value', () => {
-  expect(FireStoreParser({
+  expect(FirestoreParser({
     "array": {
       "arrayValue": undefined
     }
