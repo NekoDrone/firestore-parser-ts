@@ -1,9 +1,12 @@
 {
     "compilerOptions": {
-        "allowImportingTsExtensions": true,
-        "emitDeclarationOnly": true,
-        "declaration": true
+        "declaration": true,
+        "target": "ES2018",
+        "module": "CommonJS",
+        "outDir": "./dist",
+        "declarationDir": "./build",
+        "moduleResolution": "Node"
     },
     "include": ["src/**/*", "index.ts"],
-    "exclude": ["node_modules",]
+    "exclude": ["node_modules"]
 }

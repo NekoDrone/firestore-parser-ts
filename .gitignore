@@ -3,4 +3,5 @@
 *.log
 /coverage
 *.xml
-README.md
+/dist
+/babel

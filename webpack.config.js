@@ -1,6 +1,6 @@
 var path = require('path');
 module.exports = {
-  entry: './index.js',
+  entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'index.js',
@@ -8,13 +8,20 @@ module.exports = {
     libraryExport: 'default'
   },
   module: {
-    rules: [{
-      test: /\.ts$/,
-      exclude: /(node_modules|build)/,
-      use: {
-        loader: 'babel-loader'
+    rules: [
+      {
+        test: /\.ts$/,
+        exclude: /(node_modules|build)/,
+        use: {
+        loader: 'ts-loader'
+        }
+      },
+      {
+        test: /\.js$/,
+        use: 'babel-loader',
+        exclude: /(node_modules|build)/,
       }
-    }]
+    ]
   }
 };
 
